@@ -100,6 +100,17 @@
     if (image.complete && image.naturalWidth > 0) markLoaded();
   });
 
+  // Keep the theory-image placeholders visible until the user adds each file.
+  document.querySelectorAll('[data-theme-image]').forEach((image) => {
+    const parent = image.closest('.theory-image-frame');
+    const markLoaded = () => parent?.classList.add('has-image');
+    image.addEventListener('load', markLoaded);
+    image.addEventListener('error', () => {
+      image.hidden = true;
+    }, { once: true });
+    if (image.complete && image.naturalWidth > 0) markLoaded();
+  });
+
   // Highlight the section and question currently in view.
   const navTargets = [...document.querySelectorAll('.nav-links > a[href^="#"], .topics-menu a[href^="#"]')];
   const markCurrent = (id) => {

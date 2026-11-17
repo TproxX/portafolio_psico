@@ -216,12 +216,14 @@ img { max-width: 100%; }
 .model-compare p { margin: 0; color: var(--color-text-soft); font-size: 12px; }
 .compare-mark { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid var(--color-border-strong); border-radius: 50%; color: var(--color-accent); }
 .subheading { margin: 36px 0 18px; font-family: var(--font-display); font-size: 25px; font-weight: 400; }
-.perspective-grid { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--color-border); background: var(--color-surface); }
-.perspective-grid article { min-height: 175px; padding: 17px 15px; border-right: 1px solid var(--color-border); }
-.perspective-grid article:last-child { border-right: 0; }
-.perspective-grid article > span { color: var(--color-accent); font-size: 9px; font-weight: 700; }
-.perspective-grid h5 { margin: 13px 0 7px; font-family: var(--font-display); font-size: 17px; font-weight: 400; }
-.perspective-grid p { margin: 0; color: var(--color-text-soft); font-size: 10px; line-height: 1.65; }
+.perspectives-table-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--color-border); background: var(--color-surface); }
+.perspectives-table { width: 100%; min-width: 680px; border-collapse: collapse; table-layout: fixed; }
+.perspectives-table th, .perspectives-table td { padding: 14px 16px; border: 1px solid var(--color-border); color: var(--color-text-soft); font-size: 11px; line-height: 1.65; text-align: left; vertical-align: top; }
+.perspectives-table thead th { background: var(--color-primary-deep); color: var(--color-text-inverse); font-size: 10px; font-weight: 700; letter-spacing: .03em; }
+.perspectives-table tbody th { color: var(--color-primary-deep); font-weight: 700; }
+.perspectives-table th:first-child { width: 23%; }
+.perspectives-table th:nth-child(2) { width: 29%; }
+.perspectives-table th:nth-child(3) { width: 48%; }
 .activity-note { display: flex; gap: 17px; align-items: start; margin-top: 29px; padding: 20px 22px; background: var(--color-surface-lilac); }
 .activity-icon { color: var(--color-accent); font-size: 23px; }
 .activity-note p { margin: 0; color: var(--color-text-soft); font-size: 12px; }
@@ -231,11 +233,18 @@ img { max-width: 100%; }
 .graphic-activity-label { margin: 0 0 3px; color: var(--color-text); font-size: 12px; font-weight: 700; }
 .graphic-activity-intro h4 { margin: 0 0 9px; color: var(--color-primary-deep); font-family: var(--font-display); font-size: 23px; font-weight: 400; line-height: 1.3; }
 .graphic-activity-intro p:last-child, .graphic-activity-reflection { margin: 0; color: var(--color-text-soft); font-size: 12px; line-height: 1.75; }
-.activity-image-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(5, auto); grid-auto-flow: column; gap: 12px; margin-top: 22px; }
-.activity-image-slot { min-width: 0; margin: 0; padding: 8px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); }
-.image-slot-placeholder { display: flex; min-height: 112px; align-items: center; justify-content: center; gap: 11px; border: 1px dashed var(--color-border-strong); background: var(--color-surface-muted); color: var(--color-text-muted); font-size: 10px; }
-.image-slot-placeholder span:first-child { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid var(--color-secondary); border-radius: 50%; color: var(--color-accent); font-family: var(--font-display); font-size: 13px; }
-.activity-image-slot figcaption { padding: 6px 3px 0; color: var(--color-text-muted); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.perspective-theory-list { display: grid; gap: 12px; margin-top: 22px; }
+.perspective-theory-row { display: grid; grid-template-columns: minmax(170px, .72fr) minmax(0, 2fr); gap: 12px; align-items: stretch; }
+.perspective-image-card, .theory-image-card { min-width: 0; margin: 0; padding: 8px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); }
+.perspective-image-card { display: flex; flex-direction: column; justify-content: center; }
+.perspective-image-card img { display: block; width: 100%; height: 112px; object-fit: contain; }
+.perspective-image-card figcaption { padding: 7px 3px 1px; color: var(--color-text-muted); font-size: 9px; letter-spacing: .06em; text-align: center; text-transform: uppercase; }
+.theory-image-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.theory-image-frame { position: relative; display: grid; min-height: 132px; height: 100%; place-items: center; overflow: hidden; border: 1px dashed var(--color-border-strong); border-radius: 4px; background: var(--color-surface-muted); }
+.theory-image-frame img { display: block; width: 100%; height: 100%; min-height: 132px; object-fit: contain; }
+.theory-image-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 10px; color: var(--color-text-muted); font-size: 10px; text-align: center; }
+.theory-image-placeholder small { max-width: 100%; overflow-wrap: anywhere; color: var(--color-accent); font-size: 9px; }
+.theory-image-frame.has-image .theory-image-placeholder { display: none; }
 .graphic-activity-reflection { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--color-border); }
 .resource-link { display: flex; min-height: 61px; flex-direction: column; justify-content: center; gap: 1px; padding: 10px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-small); background: var(--color-surface); text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
 .resource-link:hover { transform: translateY(-2px); border-color: var(--color-primary); }
@@ -383,9 +392,11 @@ img { max-width: 100%; }
 .puberty-grid p, .brain-grid p, .network-pair p { margin: 0; color: var(--color-text-soft); font-size: 11px; }
 .puberty-grid ul { margin: 7px 0 0; padding-left: 18px; color: var(--color-text-soft); font-size: 11px; line-height: 1.65; }
 .puberty-grid li + li { margin-top: 6px; }
-.brain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
+.brain-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
 .brain-grid article { min-height: 150px; padding: 18px; border: 1px solid var(--color-border); background: var(--color-surface); }
 .brain-mark { color: var(--color-accent); font-family: var(--font-display); font-size: 22px; }
+.prefrontal-note { margin: 10px 0 0; padding: 14px 17px; border-left: 2px solid var(--color-accent); background: var(--color-surface-warm); color: var(--color-text-soft); font-size: 11px; line-height: 1.7; }
+.prefrontal-note strong { color: var(--color-primary-deep); }
 .steinberg-card { margin-top: 20px; padding: 22px; background: var(--color-primary-deep); color: var(--color-text-inverse); }
 .steinberg-card .mini-label { color: var(--color-secondary); }
 .steinberg-intro { margin: 9px 0 0; color: var(--color-surface-muted); font-size: 11px; }
@@ -542,12 +553,8 @@ img { max-width: 100%; }
   .topic-item#tema-1 .two-cards, .topic-item#tema-1 .influence-row { grid-template-columns: 1fr; }
   .topic-lead { font-size: 13px; }
   .graphic-activity { padding: 18px; }
-  .image-slot-placeholder { min-height: 100px; }
-  .perspective-grid { grid-template-columns: repeat(2, 1fr); }
-  .perspective-grid article { min-height: 135px; border-bottom: 1px solid var(--color-border); }
-  .perspective-grid article:nth-child(2n) { border-right: 0; }
-  .perspective-grid article:last-child { border-bottom: 0; }
-  .perspective-grid article:nth-last-child(2) { border-bottom: 0; }
+  .perspective-image-card img { height: 100px; }
+  .theory-image-frame, .theory-image-frame img { min-height: 115px; }
   .domain-table > div { grid-template-columns: 110px 1fr; gap: 12px; padding: 13px; font-size: 11px; }
   .observation-area-list { grid-template-columns: 1fr; }
   .risk-opportunity { grid-template-columns: 1fr; }
@@ -606,7 +613,6 @@ img { max-width: 100%; }
   .story-card { grid-template-columns: 1fr; }
   .story-image { min-height: 180px; }
   .story-image img { height: 180px; }
-  .perspective-grid { grid-template-columns: 1fr 1fr; }
   .domain-grid article { min-height: 0; }
   .observation-result { grid-template-columns: 1fr; }
   .result-stamp { width: 72px; height: 72px; font-size: 14px; }
@@ -634,9 +640,20 @@ img { max-width: 100%; }
   .stat-grid div:nth-child(-n+2) { border-bottom: 1px solid var(--color-border); }
   .closing-question p { font-size: 19px; }
   .resource-row { grid-template-columns: 1fr; }
-  .activity-image-grid { grid-template-columns: 1fr; grid-template-rows: repeat(10, auto); grid-auto-flow: row; }
+  .perspective-theory-row { grid-template-columns: minmax(125px, .75fr) minmax(0, 1.6fr); gap: 8px; }
+  .perspective-image-card img { height: 90px; }
+  .perspective-image-card figcaption { font-size: 8px; }
+  .theory-image-grid { gap: 6px; }
+  .theory-image-card { padding: 5px; }
+  .theory-image-frame, .theory-image-frame img { min-height: 100px; }
+  .theory-image-placeholder { font-size: 9px; }
   .source-note { flex-direction: column; gap: 8px; }
   .back-top span { display: none; }
+}
+
+@media (max-width: 420px) {
+  .perspective-theory-row { grid-template-columns: 1fr; }
+  .perspective-image-card img { height: 105px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
